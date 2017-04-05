@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions targetNamespace="urn:alz:AEMSOAPInterface"
+	xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:s="http://www.w3.org/2001/XMLSchema"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:alz:AEMSOAPInterface"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+	<types>
+		<s:schema elementFormDefault="qualified" targetNamespace="urn:alz:AEMSOAPInterface">
+			<s:complexType name="Element">
+				<s:sequence>
+					<s:any processContents="lax" />
+				</s:sequence>
+			</s:complexType>
+			<s:element name="alzUnsub">
+				<s:complexType>
+					<s:sequence>
+						<s:element maxOccurs="1" minOccurs="1" name="sessiontoken"
+							type="s:string" />
+						<s:element maxOccurs="1" minOccurs="1" name="pId" type="s:string" />
+						<s:element maxOccurs="1" minOccurs="1" name="mId" type="s:int" />
+						<s:element maxOccurs="1" minOccurs="1" name="flag" type="s:string" />
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="alzUnsubResponse">
+				<s:complexType>
+					<s:sequence />
+				</s:complexType>
+			</s:element>
+		</s:schema>
+	</types>
+	<message name="alzUnsubIn">
+		<part element="tns:alzUnsub" name="parameters" />
+	</message>
+	<message name="alzUnsubOut">
+		<part element="tns:alzUnsubResponse" name="parameters" />
+	</message>
+	<portType name="AEMSOAPInterfaceMethodsSoap">
+		<operation name="alzUnsub">
+			<input message="tns:alzUnsubIn" />
+			<output message="tns:alzUnsubOut" />
+		</operation>
+	</portType>
+	<binding name="AEMSOAPInterfaceMethodsSoap" type="tns:AEMSOAPInterfaceMethodsSoap">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<operation name="alzUnsub">
+			<soap:operation soapAction="alz:AEMSOAPInterface#alzUnsub"
+				style="document" />
+			<input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					use="literal" />
+			</input>
+			<output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					use="literal" />
+			</output>
+		</operation>
+	</binding>
+	<service name="AlzAEMSOAPInterface">
+		<port binding="tns:AEMSOAPInterfaceMethodsSoap" name="AEMSOAPInterfaceMethodsSoap">
+			<soap:address location="https://www-adobedev.allianzcornhill.co.uk/nl/jsp/soaprouter.jsp" />
+		</port>
+	</service>
+</definitions>

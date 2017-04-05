@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<!-- Reactor and parent POM for bundles. -->
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.allianz.wcm.aem.crmunsubscribe.bundles</groupId>
+	<artifactId>bundles</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0-SNAPSHOT</version>
+	<name>crmunsubscribe bundles</name>
+	<parent>
+		<groupId>com.allianz.wcm.aem.crmunsubscribe</groupId>
+		<artifactId>crmunsubscribe</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		  <relativePath>..</relativePath>
+	</parent>
+	<modules>
+		<module>anz-crm-webservice-client-bundle</module>
+	</modules>
+	<dependencies>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.0</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+</project>
